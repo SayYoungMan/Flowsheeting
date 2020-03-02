@@ -25,7 +25,7 @@ def scenario():
     ax[0].set_xticks([])
     ax[1].set_ylim([-1000, 0])
     ax[1].set_xlim([0, 0.4])
-    fig.suptitle('Comparison of Different Scenarios')
+    #fig.suptitle('Comparison of Different Scenarios')
     fig.text(0.04, 0.5, "Economic Potential (Million USD/yr)", va='center', rotation='vertical')
     fig.text(0.5, 0.04, "Conversion", ha='center')
     plt.subplots_adjust(hspace=0)
@@ -46,7 +46,7 @@ def temperature():
     plt.plot(temp_760[:,1], temp_760[:,0]/1000000, label="760K")
     plt.plot(temp_790[:,1], temp_790[:,0]/1000000, label="790K")
     plt.plot(temp_820[:,1], temp_820[:,0]/1000000, label="820K")
-    plt.title("EP Comparison of Different Temperatures")
+    #plt.title("EP Comparison of Different Temperatures")
     plt.ylabel("Economic Potential (Million USD/yr)")
     plt.xlabel("Conversion")
     plt.legend()
@@ -66,7 +66,7 @@ def pressure():
     plt.plot(pres_1[:,1], pres_1[:,0]/1000000, label="1 bar")
     plt.plot(pres_5[:,1], pres_5[:,0]/1000000, label="5 bar")
     plt.plot(pres_10[:,1], pres_10[:,0]/1000000, label="10 bar")
-    plt.title("EP Comparison of Different Pressures")
+    #plt.title("EP Comparison of Different Pressures")
     plt.ylabel("Economic Potential (Million USD/yr)")
     plt.xlabel("Conversion")
     plt.legend()
@@ -95,4 +95,28 @@ plt.ylim([-50, 40])
 plt.show()
 '''
 
-scenario()
+# -------------------------------Feed Ratio comparison with EP---------------------------------
+def feed_ratio_ep():
+    df = pd.read_excel("Data/graphst to seyoung.xlsx", sheet_name="EP2 different feed ratio", usecols='A:E').to_numpy()
+    plt.plot(df[:, 0], df[:, 1] / 1000000, label="MeOH 1:1 Tol")
+    plt.plot(df[:, 0], df[:, 2] / 1000000, label="MeOH 1:2 Tol")
+    plt.plot(df[:, 0], df[:, 3] / 1000000, label="MeOH 1:3 Tol")
+    plt.plot(df[:, 0], df[:, 4] / 1000000, label="MeOH 1:4 Tol")
+    plt.ylabel("Economic Potential (Million USD/yr)")
+    plt.xlabel("Conversion")
+    plt.legend()
+    plt.show()
+
+#------------------------------Selectivity vs Conversion------------------------------
+def sel_conv():
+    df = pd.read_excel("Data/level 2 selec vs convo.xlsx", sheet_name="Sheet2", usecols='B:I', skiprows=1).to_numpy()
+    plt.plot(df[:, 0], df[:, 1], label="730K")
+    plt.plot(df[:, 6], df[:, 7], label="750K")
+    plt.plot(df[:, 3], df[:, 4], label="770K")
+    plt.ylabel("Selectivity")
+    plt.xlabel("Conversion")
+    plt.legend()
+    plt.show()
+
+
+sel_conv()

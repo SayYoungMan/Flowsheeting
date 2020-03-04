@@ -1,6 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+from scipy.signal import savgol_filter
 
 # -------------------------------Scenario comparison---------------------------------
 # Import data
@@ -46,6 +47,7 @@ def temperature():
     plt.plot(temp_760[:,1], temp_760[:,0]/1000000, label="760K")
     plt.plot(temp_790[:,1], temp_790[:,0]/1000000, label="790K")
     plt.plot(temp_820[:,1], temp_820[:,0]/1000000, label="820K")
+    plt.hlines(0,0,100,linestyles="--")
     #plt.title("EP Comparison of Different Temperatures")
     plt.ylabel("Economic Potential (Million USD/yr)")
     plt.xlabel("Conversion")
@@ -66,6 +68,7 @@ def pressure():
     plt.plot(pres_1[:,1], pres_1[:,0]/1000000, label="1 bar")
     plt.plot(pres_5[:,1], pres_5[:,0]/1000000, label="5 bar")
     plt.plot(pres_10[:,1], pres_10[:,0]/1000000, label="10 bar")
+    plt.hlines(0,0,100,linestyles="--")
     #plt.title("EP Comparison of Different Pressures")
     plt.ylabel("Economic Potential (Million USD/yr)")
     plt.xlabel("Conversion")
@@ -97,13 +100,21 @@ plt.show()
 
 # -------------------------------Feed Ratio comparison with EP---------------------------------
 def feed_ratio_ep():
-    df = pd.read_excel("Data/graphst to seyoung.xlsx", sheet_name="EP2 different feed ratio", usecols='A:E').to_numpy()
-    plt.plot(df[:, 0], df[:, 1] / 1000000, label="MeOH 1:1 Tol")
-    plt.plot(df[:, 0], df[:, 2] / 1000000, label="MeOH 1:2 Tol")
-    plt.plot(df[:, 0], df[:, 3] / 1000000, label="MeOH 1:3 Tol")
-    plt.plot(df[:, 0], df[:, 4] / 1000000, label="MeOH 1:4 Tol")
+    one = pd.read_excel("Data/new graph seyoung 04032020.xlsx", sheet_name="Sheet1", usecols='A:B', nrows=7).to_numpy()
+    two = pd.read_excel("Data/new graph seyoung 04032020.xlsx", sheet_name="Sheet1", usecols='A:B', nrows=13, skiprows=40).to_numpy()
+    three = pd.read_excel("Data/new graph seyoung 04032020.xlsx", sheet_name="Sheet1", usecols='A:B', nrows=11, skiprows=24).to_numpy()
+    four = pd.read_excel("Data/new graph seyoung 04032020.xlsx", sheet_name="Sheet1", usecols='A:B', nrows=10, skiprows=10).to_numpy()
+
+    plt.plot(one[:, 0], one[:, 1] / 1000000, label="MeOH 1:1 Tol")
+    plt.plot(two[:, 0], two[:, 1] / 1000000, label="MeOH 1:2 Tol")
+    plt.plot(three[:, 0], three[:, 1] / 1000000, label="MeOH 1:3 Tol")
+    plt.plot(four[:, 0], four[:, 1] / 1000000, label="MeOH 1:4 Tol")
+
+    plt.hlines(0,0,100,linestyles="--")
     plt.ylabel("Economic Potential (Million USD/yr)")
     plt.xlabel("Conversion")
+    plt.xlim([0, 25])
+    plt.ylim([-45, 35])
     plt.legend()
     plt.show()
 
@@ -119,4 +130,4 @@ def sel_conv():
     plt.show()
 
 
-sel_conv()
+temperature()

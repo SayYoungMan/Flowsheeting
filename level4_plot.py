@@ -206,5 +206,12 @@ def dis10():
 	plt.subplots_adjust(hspace=0.5)
 	plt.show()
 
+def crys():
+	df = pd.read_excel("Data/Separation Unit Sensitivity.xlsx", sheet_name="Crystal", usecols='B:E', skiprows=1).to_numpy()
+	plt.plot(df[:, 0], df[:, 3])
+	plt.ylabel("Recovery (%)")
+	plt.xlabel("Temperatrue (K)")
+	plt.subplots_adjust(left = 0.15)
+	plt.show()
 #-------------- Execute -------------------
-dec()
+crys()

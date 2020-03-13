@@ -83,15 +83,15 @@ def ada_iso():
     sevensix = df.loc[10].to_numpy()
     seveneight = df.loc[11].to_numpy()
 
-    plt.plot(cov, sixsix / 1000000, label="660K", color = 'blue')
-    plt.plot(cov, sixeight / 1000000, label="680K", color = 'aqua')
-    plt.plot(cov, sevenzero / 1000000, label="700K", color = 'darkgreen')
-    plt.plot(cov, seventwo / 1000000, label="720K", color = 'limegreen')
-    plt.plot(cov, sevenfour / 1000000, label="740K", color = 'yellow')
-    plt.plot(cov, sevensix / 1000000, label="760K", color = 'darkorange')
-    plt.plot(cov, seveneight / 1000000, label="780K", color = 'red')
+    plt.plot(cov, sixsix / 1000000, label="Adiabatic 660K", color = 'blue')
+    plt.plot(cov, sixeight / 1000000, label="Adiabatic 680K", color = 'aqua')
+    plt.plot(cov, sevenzero / 1000000, label="Adiabatic 700K", color = 'darkgreen')
+    plt.plot(cov, seventwo / 1000000, label="Adiabatic 720K", color = 'limegreen')
+    plt.plot(cov, sevenfour / 1000000, label="Adiabatic 740K", color = 'yellow')
+    plt.plot(cov, sevensix / 1000000, label="Adiabatic 760K", color = 'darkorange')
+    plt.plot(cov, seveneight / 1000000, label="Adiabatic 780K", color = 'red')
 
-    plt.plot(iso[:, 2] / 100, iso[:, 0] / 1000000, linestyle='--', label="Isothermal", color = 'indigo')
+    plt.plot(iso[:, 2] / 100, iso[:, 0] / 1000000, linestyle='--', label="Isothermal 730K", color = 'indigo')
     plt.hlines(0,0,100,linestyles="-")
     plt.legend(loc = 'lower left')
     plt.xlim([0, 0.30])
@@ -100,5 +100,4 @@ def ada_iso():
     plt.xlabel("Conversion")
     plt.show()
 
-
-heating_method()
+ada_iso()

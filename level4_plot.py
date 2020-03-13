@@ -17,8 +17,8 @@ plt.rcParams['lines.linewidth'] = 2
 #---------------- Graphs ------------------
 def f1():
 	df = pd.read_excel("Data/Separation Unit Sensitivity.xlsx", sheet_name="Flashes", usecols='A:H', skiprows=1).to_numpy()
-	plt.plot(df[:, 0], df[:, 6]*100, label="Ethylene Distillate")
-	plt.plot(df[:, 0], df[:, 7]*100, label="Methanol Recovery")
+	plt.plot(df[:, 0], df[:, 6]*100, label="Ethylene Vapour")
+	plt.plot(df[:, 0], df[:, 7]*100, label="Methanol Liquid")
 	plt.ylabel("Recovery (%)")
 	plt.xlabel("Temperatrue (°C)")
 	plt.legend()
@@ -26,8 +26,8 @@ def f1():
 
 def f2():
 	df = pd.read_excel("Data/Separation Unit Sensitivity.xlsx", sheet_name="Flashes", usecols='K:R', skiprows=1).to_numpy()
-	plt.plot(df[:, 0], df[:, 6]*100, label="Ethylene Distillate")
-	plt.plot(df[:, 0], df[:, 7]*100, label="Methanol Recovery")
+	plt.plot(df[:, 0], df[:, 6]*100, label="Ethylene Vapour")
+	plt.plot(df[:, 0], df[:, 7]*100, label="Methanol Liquid")
 	plt.ylabel("Recovery (%)")
 	plt.xlabel("Temperatrue (°C)")
 	plt.legend()
@@ -214,4 +214,5 @@ def crys():
 	plt.subplots_adjust(left = 0.15)
 	plt.show()
 #-------------- Execute -------------------
-crys()
+f1()
+f2()

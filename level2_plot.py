@@ -25,12 +25,12 @@ def scenario():
 
     # Plot Graph
     fig, ax = plt.subplots(2, 1)
-    ax[1].plot(in_out[:,1], in_out[:,0]/1000000, label="In/Out", color="darkorange", linewidth=3.5)
-    ax[0].plot(rec_only[:,1], rec_only[:,0]/1000000, label="Recycle Only", color="forestgreen", linewidth=3.5)
-    ax[1].plot(rec_only[:,1], rec_only[:,0]/1000000, label="Recycle Only", color="forestgreen", linewidth=3.5)
-    ax[0].plot(pmfuel[:,1], pmfuel[:,0]/1000000, label="Recycle + Xylene Fuel", color = "royalblue", linewidth=3.5)
-    ax[1].plot(pmfuel[:, 1], pmfuel[:,0]/1000000, label="Recycle + Xylene Fuel", color="royalblue", linewidth=3.5)
-    ax[1].plot(mefuel[:,1], mefuel[:,0]/1000000, label = "Methanol Fuel", color = "crimson", linewidth=3.5)
+    ax[1].plot(in_out[:,1], in_out[:,0]/1000000, label="In/Out (Case 1)", color="darkorange", linewidth=3.5)
+    ax[0].plot(rec_only[:,1], rec_only[:,0]/1000000, label="Recycle Only (Case 2)", color="forestgreen", linewidth=3.5)
+    ax[1].plot(rec_only[:,1], rec_only[:,0]/1000000, label="Recycle Only (Case 2)", color="forestgreen", linewidth=3.5)
+    ax[1].plot(mefuel[:,1], mefuel[:,0]/1000000, label = "Toluene Recycle + Methanol Fuel (Case 3)", color = "crimson", linewidth=3.5)
+    ax[0].plot(pmfuel[:,1], pmfuel[:,0]/1000000, label="Recycle + Xylene Fuel (Case 4)", color = "royalblue", linewidth=3.5)
+    ax[1].plot(pmfuel[:, 1], pmfuel[:,0]/1000000, label="Recycle + Xylene Fuel (Case 4)", color="royalblue", linewidth=3.5)
     ax[0].set_ylim([0, 40])
     ax[0].set_xlim([0.025, 0.35])
     ax[0].set_xticklabels([])
@@ -42,7 +42,7 @@ def scenario():
     ax[1].set_xlim([0.025, 0.35])
     ax[0].axhline(ep1, linestyle='--', color='black', label='EP1', linewidth=3.5)
     ax[1].axhline(ep1, linestyle='--', color='black', label='EP1')
-    ax[1].legend(loc='upper center', bbox_to_anchor=(0.5, 2.3), ncol=3, fancybox=True, shadow=True, fontsize=28)
+    ax[1].legend(loc='upper center', bbox_to_anchor=(0.5, 2.3), ncol=3, fancybox=True, shadow=True, fontsize=25)
     fig.text(0.04, 0.5, "Economic Potential (Million USD/yr)", va='center', rotation='vertical', fontsize=30, fontweight='bold')
     fig.text(0.5, 0.04, "Conversion", ha='center', fontsize=30, fontweight='bold')
     plt.subplots_adjust(hspace=0)
@@ -115,10 +115,10 @@ plt.show()
 
 # -------------------------------Feed Ratio comparison with EP---------------------------------
 def feed_ratio_ep():
-    one = pd.read_excel("Data/new graph seyoung 04032020.xlsx", sheet_name="Sheet1", usecols='A:B', nrows=7).to_numpy()
-    two = pd.read_excel("Data/new graph seyoung 04032020.xlsx", sheet_name="Sheet1", usecols='A:B', nrows=13, skiprows=40).to_numpy()
-    three = pd.read_excel("Data/new graph seyoung 04032020.xlsx", sheet_name="Sheet1", usecols='A:B', nrows=11, skiprows=24).to_numpy()
-    four = pd.read_excel("Data/new graph seyoung 04032020.xlsx", sheet_name="Sheet1", usecols='A:B', nrows=10, skiprows=10).to_numpy()
+    one = pd.read_excel("Data/LEVEL 3 excel.xlsx", sheet_name="EP2 vary feed ratio", usecols='A:B', nrows=20).to_numpy()
+    two = pd.read_excel("Data/LEVEL 3 excel.xlsx", sheet_name="EP2 vary feed ratio", usecols='A:B', nrows=13, skiprows=23).to_numpy()
+    three = pd.read_excel("Data/LEVEL 3 excel.xlsx", sheet_name="EP2 vary feed ratio", usecols='A:B', nrows=11, skiprows=39).to_numpy()
+    four = pd.read_excel("Data/LEVEL 3 excel.xlsx", sheet_name="EP2 vary feed ratio", usecols='A:B', nrows=10, skiprows=53).to_numpy()
 
     plt.plot(one[:, 0] / 100, one[:, 1] / 1000000, label="MeOH 1:1 Tol")
     plt.plot(two[:, 0] / 100, two[:, 1] / 1000000, label="MeOH 1:2 Tol")

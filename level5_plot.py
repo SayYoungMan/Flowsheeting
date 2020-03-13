@@ -86,4 +86,48 @@ def HC4():
 	plt.ylabel("Temperatrue (°C)")
 	plt.show()
 
-CI_zoom()
+def cs2hs1():
+	#Values
+	hs1_init = 355.13
+	hs1_end = 157.50
+	cs2_init = 180.63
+	cs2_end = 137.50
+
+	# HS1 Line
+	plt.hlines(hs1_init, 0, 0.2, colors="red")
+	plt.hlines(hs1_end, 0.8, 1, colors="red")
+	plt.plot([0.2, 0.8], [hs1_init, hs1_end], color="red")
+
+	# CS2 Line
+	plt.hlines(cs2_init, 0, 0.2, colors="blue")
+	plt.hlines(cs2_end, 0.8, 1, colors="blue")
+	plt.plot([0.2, 0.8], [cs2_init, cs2_end], color="blue")
+
+	# Draw Box
+	plt.hlines(375, 0.2, 0.8, colors="black")
+	plt.hlines(125, 0.2, 0.8, colors="black")
+	plt.vlines(0.2, 125, 375, colors="black")
+	plt.vlines(0.8, 125, 375, colors="black")
+
+	# Texts
+	plt.text(0.022, 360, '355.13°C', fontsize=12)
+	plt.text(0.825, 123, '137.50°C', fontsize=12)
+	plt.text(0.022, 185, '180.63°C', fontsize=12)
+	plt.text(0.825, 162, '157.50°C', fontsize=12)
+
+	# Arrow
+	plt.annotate(s='', xy=(1.03, 162), xytext=(1.03, 133), arrowprops=dict(arrowstyle='<->'))
+	plt.text(1.05, 143, r'$\Delta T_{out}=20°C$', fontsize=12)
+
+	# Style
+	plt.ylim([100, 400])
+	plt.xlim([0, 1.2])
+	plt.grid(False)
+	plt.xticks([])
+	plt.gca().spines['top'].set_visible(False)
+	plt.gca().spines['right'].set_visible(False)
+	plt.gca().spines['bottom'].set_visible(False)
+	plt.ylabel("Temperatrue (°C)")
+	plt.show()
+
+cs2hs1()
